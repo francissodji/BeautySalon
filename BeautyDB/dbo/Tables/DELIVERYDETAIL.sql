@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[DELIVERYDETAIL]
+(
+	[IDDeliveryDetail] INT NOT NULL PRIMARY KEY IDENTITY,
+	[IDDelivery] [int] NULL,
+	[IDProd] [int] NULL,
+	[QttyDelivery] [real] NULL,
+	[IDHair] [int] NULL,
+	[IDColor] [int] NULL,
+	CONSTRAINT [FK_DELIVERYDETAIL_DELIVERY] FOREIGN KEY([IDDelivery]) REFERENCES [dbo].[DELIVERY] ([IDDelivery]),
+	CONSTRAINT [FK_DELIVERYDETAIL_PRODUCT] FOREIGN KEY([IDProd]) REFERENCES [dbo].[PRODUCT] ([IDProd]),
+)

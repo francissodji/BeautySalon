@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[DELIVERY]
+(
+	[IDDelivery] INT NOT NULL PRIMARY KEY IDENTITY,
+	[IDOrder] [int] NOT NULL,
+	[DateDelivery] [date] NULL,
+	CONSTRAINT [FK_DELIVERY_ORDERS] FOREIGN KEY([IDOrder]) REFERENCES [dbo].[ORDERS] ([IDOrder])
+)

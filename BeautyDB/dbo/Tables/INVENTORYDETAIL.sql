@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[INVENTORYDETAIL]
+(
+	[IDInventDetail] INT NOT NULL PRIMARY KEY IDENTITY,
+	[IDInvent] [int] NULL,
+	[IDProdInvent] [int] NULL,
+	[QttyInvent] [real] NULL,
+	[IDHairInvent] [int] NULL,
+	[IDColorInvent] [int] NULL,
+	CONSTRAINT [FK_INVENTORYDETAIL_INVENTORY] FOREIGN KEY([IDInvent]) REFERENCES [dbo].[INVENTORY] ([IDInvent]),
+	CONSTRAINT [FK_INVENTORYDETAIL_PRODUCT] FOREIGN KEY([IDProdInvent]) REFERENCES [dbo].[PRODUCT] ([IDProd]),
+)

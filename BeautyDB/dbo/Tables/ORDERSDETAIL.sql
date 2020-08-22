@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[ORDERSDETAIL]
+(
+	[IDOrderDetail] INT NOT NULL PRIMARY KEY IDENTITY,
+	[IDOrder] [int] NOT NULL,
+	[IDProd] [int] NOT NULL,
+	[QttyOrder] [real] NULL,
+	[UnitPrice] [money] NULL,
+	[IDHair] [int] NULL,
+	[IDColor] [int] NULL,
+	CONSTRAINT [FK_ORDERSDETAIL_ORDER] FOREIGN KEY([IDOrder]) REFERENCES [dbo].[ORDERS] ([IDOrder]),
+	CONSTRAINT [FK_ORDERSDETAIL_PRODUCT] FOREIGN KEY([IDProd]) REFERENCES [dbo].[PRODUCT] ([IDProd]),
+)

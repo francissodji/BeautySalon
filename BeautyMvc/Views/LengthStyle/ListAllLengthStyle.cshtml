@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BeautyMvc.Models.LengthStyleModelFE>
+
+@{
+    ViewData["Title"] = "ListAllLengthStyle";
+}
+
+<h1>ListAllLengthStyle</h1>
+
+<p>
+    <a asp-action="CreateLengthForStyle">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IDExtratStyle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IDStyle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IDExtrat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostExtra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostTouchUpExtra)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDExtratStyle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDStyle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDExtrat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostExtra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostTouchUpExtra)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

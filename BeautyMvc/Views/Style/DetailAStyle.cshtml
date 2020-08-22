@@ -1,0 +1,95 @@
+﻿@model BeautyLibrary.Models.StyleModel
+
+@{
+    ViewData["Title"] = "DetailAStyle";
+    var PhotoPath = "~/images/" + (Model.PictureStyle ?? "noimage.png");
+}
+
+<h1>DetailAStyle</h1>
+
+<div class="col">
+    <div>
+        <h4>StyleModel</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IDStyle)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IDStyle)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DesigStyle)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DesigStyle)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DescriptStyle)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DescriptStyle)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.HairProvStyle)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.HairProvStyle)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CostStyle)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CostStyle)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PictureStyle)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PictureStyle)
+            </dd>
+
+            <dd>
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PriceTakeOffHair)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PriceTakeOffHair)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CostTouchUp)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CostTouchUp)
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h2>@Model.DesigStyle</h2>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top imageBeauty" src="@PhotoPath" asp-append-version="true" />
+                <h4>Style ID: @Model.IDStyle</h4>
+                <h4>Style Name: @Model.DesigStyle</h4>
+            </div>
+
+            <div class="card-footer text-center">
+                <a href=""></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.IDStyle }) |
+    <a asp-action="ListAllStyle">Back to List</a>
+</div>

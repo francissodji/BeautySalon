@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[HAIRCOLORS]
+(
+	[IdHairColor] INT NOT NULL PRIMARY KEY IDENTITY,
+	[IdHair] [int] NOT NULL,
+	[IdColor] [int] NOT NULL,
+	[StockAlert] [real] NULL,
+	[StockSecurity] [real] NULL,
+
+	CONSTRAINT [FK_HAIRCOLORS_COLOR] FOREIGN KEY([IdColor]) REFERENCES [dbo].[COLOR] ([IdColor]),
+	CONSTRAINT [FK_HAIRCOLORS_HAIR] FOREIGN KEY([IdHair]) REFERENCES [dbo].[HAIR] ([IDHair]),
+)

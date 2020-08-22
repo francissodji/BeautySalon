@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BeautyMvc.Models.DiscountModel>
+
+@{
+    ViewData["Title"] = "ListAllDiscount";
+}
+
+<h1>ListAllDiscount</h1>
+
+<p>
+    <a asp-action="CreateDiscount">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IDDiscount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TitleDiscount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RateDiscount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostDiscount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDDiscount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleDiscount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RateDiscount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostDiscount)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditADiscount", new { Id = item.IDDiscount }) |
+                @Html.ActionLink("Details", "DetailADiscount", new { id = item.IDDiscount }) |
+                @Html.ActionLink("Delete", "DeleteDiscount", new { id = item.IDDiscount })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

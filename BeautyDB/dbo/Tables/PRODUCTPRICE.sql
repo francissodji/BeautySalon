@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[PRODUCTPRICE]
+(
+	[IdProdPrice] INT NOT NULL PRIMARY KEY IDENTITY,
+	[IdProd] [int] NOT NULL,
+	[SalePrice] [money] NULL,
+	[SaleTax] [real] NULL, 
+
+	CONSTRAINT [FK_PRODUCTPRICE_PRODUCT] FOREIGN KEY([IdProd]) REFERENCES [PRODUCT] ([IDProd]),
+)

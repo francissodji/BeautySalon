@@ -1,0 +1,68 @@
+﻿@model BeautyMvc.Models.StyleModelIF
+
+@{
+    ViewData["Title"] = "EditAStyle";
+}
+
+<h1>EditAStyle</h1>
+
+<h4>StyleModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditAStyle">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IDStyle" class="control-label"></label>
+                <input asp-for="IDStyle" class="form-control" />
+                <span asp-validation-for="IDStyle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DesigStyle" class="control-label"></label>
+                <input asp-for="DesigStyle" class="form-control" />
+                <span asp-validation-for="DesigStyle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptStyle" class="control-label"></label>
+                <input asp-for="DescriptStyle" class="form-control" />
+                <span asp-validation-for="DescriptStyle" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HairProvStyle" /> @Html.DisplayNameFor(model => model.HairProvStyle)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostStyle" class="control-label"></label>
+                <input asp-for="CostStyle" class="form-control" />
+                <span asp-validation-for="CostStyle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceTakeOffHair" class="control-label"></label>
+                <input asp-for="PriceTakeOffHair" class="form-control" />
+                <span asp-validation-for="PriceTakeOffHair" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostTouchUp" class="control-label"></label>
+                <input asp-for="CostTouchUp" class="form-control" />
+                <span asp-validation-for="CostTouchUp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PictureStyle" class="control-label"></label>
+                <input asp-for="PictureStyle" class="form-control" />
+                <span asp-validation-for="PictureStyle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

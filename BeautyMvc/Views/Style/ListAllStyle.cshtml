@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BeautyMvc.Models.StyleModelIF>
+
+@{
+    ViewData["Title"] = "ListAllStyle";
+}
+
+<h1>ListAllStyle</h1>
+
+<p>
+    <a asp-action="CreateStyle">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DesigStyle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescriptStyle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HairProvStyle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostStyle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceTakeOffHair)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostTouchUp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+
+    //var PhotoPath = "~/images/" + (item.Picture ?? "noimage.png");
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DesigStyle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescriptStyle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HairProvStyle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostStyle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceTakeOffHair)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostTouchUp)
+            </td>
+
+            <td>
+                <div class="card m-3">
+                    <img class="card-img-top imageStyle" src ="@item.Picture" asp-append-version="true"/>
+                </div>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditAStyle", new { Id = item.IDStyle }) |
+                @Html.ActionLink("Details", "DetailAStyle", new { Id = item.IDStyle }) |
+                @Html.ActionLink("Delete", "Delete", new { Id = item.IDStyle }) |
+                @Html.ActionLink("Add Length", "LenghtForStyle", new { item.IDStyle })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

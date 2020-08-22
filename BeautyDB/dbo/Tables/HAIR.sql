@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[HAIR]
+(
+	[IDHair] INT NOT NULL PRIMARY KEY IDENTITY,
+	[TitleHair] [nvarchar](100) NULL,
+	[IDProd] [int] NOT NULL,
+
+	CONSTRAINT [FK_HAIR_PRODUCT] FOREIGN KEY([IDProd]) REFERENCES [dbo].[PRODUCT] ([IDProd]),
+)
