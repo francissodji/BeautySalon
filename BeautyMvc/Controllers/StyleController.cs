@@ -103,18 +103,18 @@ namespace BeautyMvc.Controllers
         {
             if (Id > 0)
             {
-                var OneStyle = _database.StyleGetInfoById(Id);
+                var OneStylefromDB = _database.StyleGetInfoById(Id);
 
-                StyleModel AStyle = new StyleModel();
+                StyleModelIF AStyle = new StyleModelIF();
 
-                AStyle.IDStyle = OneStyle.IDStyle;
-                AStyle.DesigStyle = OneStyle.DesigStyle;
-                AStyle.DescriptStyle = OneStyle.DescriptStyle;
-                AStyle.HairProvStyle = OneStyle.HairProvStyle;
-                AStyle.CostStyle = OneStyle.CostStyle;
-                AStyle.PriceTakeOffHair = OneStyle.PriceTakeOffHair;
-                AStyle.CostTouchUp = OneStyle.CostTouchUp;
-                AStyle.PictureStyle = OneStyle.PictureStyle;
+                AStyle.IDStyle = OneStylefromDB.IDStyle;
+                AStyle.DesigStyle = OneStylefromDB.DesigStyle;
+                AStyle.DescriptStyle = OneStylefromDB.DescriptStyle;
+                AStyle.HairProvStyle = OneStylefromDB.HairProvStyle;
+                AStyle.CostStyle = OneStylefromDB.CostStyle;
+                AStyle.PriceTakeOffHair = OneStylefromDB.PriceTakeOffHair;
+                AStyle.CostTouchUp = OneStylefromDB.CostTouchUp;
+                AStyle.PictureStyle = OneStylefromDB.PictureStyle;
 
                 return View(AStyle);
             }
@@ -146,13 +146,13 @@ namespace BeautyMvc.Controllers
         //List of Style
         public IActionResult ListAllStyle()
         {
-            var AllListStyle = _database.StyleGetList();
+            var AllStyleFromDB = _database.StyleGetList();
 
-            List<StyleModel> TheListStyle = new List<StyleModel>();
+            List<StyleModelIF> TheListStyle = new List<StyleModelIF>();
             
-            foreach (var style in AllListStyle)
+            foreach (var style in AllStyleFromDB)
             {
-                TheListStyle.Add(new StyleModel
+                TheListStyle.Add(new StyleModelIF
                 { 
                     IDStyle = style.IDStyle,
                     DesigStyle = style.DesigStyle,
@@ -166,6 +166,8 @@ namespace BeautyMvc.Controllers
             }
             return View(TheListStyle);
         }
+
+
         public IActionResult Index()
         {
             return View();

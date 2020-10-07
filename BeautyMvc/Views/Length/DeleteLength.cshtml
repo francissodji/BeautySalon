@@ -1,0 +1,32 @@
+﻿@model BeautyLibrary.Models.ExtratModel
+
+@{
+    ViewData["Title"] = "DeleteLength";
+}
+
+<h1>DeleteLength</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ExtratModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IDExtrat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IDExtrat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TitleExtrat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TitleExtrat)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteLength">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

@@ -77,8 +77,9 @@
 
             <div class="card-body text-center">
                 <img class="card-img-top imageBeauty" src="@PhotoPath" asp-append-version="true" />
-                <h4>Style ID: @Model.IDStyle</h4>
                 <h4>Style Name: @Model.DesigStyle</h4>
+                <h4>Normal Length: $@Model.CostStyle</h4>
+                <h4>Style Name: @Model.DescriptStyle</h4>
             </div>
 
             <div class="card-footer text-center">
@@ -90,6 +91,6 @@
 
 
 <div>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.IDStyle }) |
+    @Html.ActionLink("Edit", "EditAStyle", new { Id = Model.IDStyle }) |
     <a asp-action="ListAllStyle">Back to List</a>
 </div>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BeautyMvc.Models.LengthModelFE>
+
+@{
+    ViewData["Title"] = "ListAllLength";
+}
+
+<h1>ListAllLength</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IDExtrat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TitleExtrat)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDExtrat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TitleExtrat)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditLength", new { Id=item.IDExtrat  }) |
+                    @Html.ActionLink("Details", "DetailLength", new { Id = item.IDExtrat }) |
+                    @Html.ActionLink("Delete", "DeleteLength", new { Id = item.IDExtrat })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -35,5 +35,8 @@ namespace BeautyMvc.Models
         [BindProperty]
         public decimal CostTouchUpExtra { get; set; }
 
+        public string DesignLength { get; set; }
+        //public string DesignStyleShow { get; set; }
+        //public string DescripStyleShow { get; set; }
     }
 }

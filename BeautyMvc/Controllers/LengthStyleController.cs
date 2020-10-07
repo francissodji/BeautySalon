@@ -23,7 +23,7 @@ namespace BeautyMvc.Controllers
 
 
         //Create to 
-        public IActionResult CreateLengthForStyle(LengthStyleModelFE TheLengthForStyle)
+        public IActionResult CreateLengthForStyle(int Id, LengthStyleModelFE TheLengthForStyle)
         {
             //DD Length
             
@@ -31,14 +31,14 @@ namespace BeautyMvc.Controllers
             ListLength = _database.ExtratGetListAllExtrat();
             ViewBag.DdListLength = ListLength;
 
-            
-            List<StyleModel> ListStyle;
-            ListStyle = _database.StyleGetList();
-            ViewBag.DdListStyle = ListStyle;
+            //List<StyleModel> ListStyle;
+            //ListStyle = _database.StyleGetList();
+            //ViewBag.DdListStyle = ListStyle;
             
 
             if (ModelState.IsValid)
             {
+                TheLengthForStyle.IDStyle = Id;
                 if (TheLengthForStyle.IDStyle > 0 && TheLengthForStyle.IDExtrat > 0)
                 {
                     _database.CreateLengthToStyle(TheLengthForStyle.IDStyle, TheLengthForStyle.IDExtrat, TheLengthForStyle.CostExtra, TheLengthForStyle.CostTouchUpExtra);
@@ -48,39 +48,38 @@ namespace BeautyMvc.Controllers
             return View();
         }
 
-        /*
-        public IActionResult LoadDDList()
-        {
-            List<ExtratModel> ListLength = new List<ExtratModel>();
-
-            ListLength = _database.ExtratGetListAllExtrat();
-
-            ViewBag.DDListLength = ListLength;
-
-            return View();
-        }
-       */
 
         //List of Extrat Style
-        public IActionResult ListAllLengthStyle(int IdSelectedStyle = 5)
+        public IActionResult ListAllLengthStyle(int Id)
         {
-            var AllLenghtPerStyleAvail = _database.LengthStyleGetAllLengthPerStyle(IdSelectedStyle);
-
-            List<LengthStyleModelFE> TheLengthPerStyleDisplayFE = new List<LengthStyleModelFE>();
-
-            foreach (var length in AllLenghtPerStyleAvail)
+            if (Id > 0)
             {
-                TheLengthPerStyleDisplayFE.Add(new LengthStyleModelFE
-                {
-                    IDExtratStyle = length.IDExtratStyle,
-                    IDStyle = length.IDStyle,
-                    IDExtrat = length.IDExtrat,
-                    CostExtra = length.CostExtra,
-                    CostTouchUpExtra = length.CostTouchUpExtra
-                });
-            }
+                var AllLenghtPerStyleAvail = _database.LengthStyleGetAllLengthPerStyle(Id);
 
-            return View(TheLengthPerStyleDisplayFE);
+                List<LengthStyleModelFE> TheLengthPerStyleDisplayFE = new List<LengthStyleModelFE>();
+
+                foreach (var length in AllLenghtPerStyleAvail)
+                {
+                    var OneLength = _database.ExtratGetOneExtrat(length.IDExtrat);
+                    var OneStyle = _database.StyleGetInfoById(length.IDStyle);
+
+                    TheLengthPerStyleDisplayFE.Add(new LengthStyleModelFE
+                    {
+                        IDExtratStyle = length.IDExtratStyle,
+                        IDStyle = length.IDStyle,
+                        IDExtrat = length.IDExtrat,
+                        CostExtra = length.CostExtra,
+                        CostTouchUpExtra = length.CostTouchUpExtra,
+
+                        DesignLength = OneLength.TitleExtrat
+                        //DesignStyleShow = OneStyle.DesigStyle,
+                        //DescripStyleShow = OneStyle.DescriptStyle
+                    });
+                }
+
+                return View(TheLengthPerStyleDisplayFE);
+            }
+            return View();
         }
 
         //public List<ExtratModel> DDListOfLength { get; set; }

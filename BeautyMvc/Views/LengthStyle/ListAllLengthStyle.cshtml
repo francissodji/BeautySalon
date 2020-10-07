@@ -4,7 +4,7 @@
     ViewData["Title"] = "ListAllLengthStyle";
 }
 
-<h1>ListAllLengthStyle</h1>
+<h1>List of All Length for Style</h1>
 
 <p>
     <a asp-action="CreateLengthForStyle">Create New</a>
@@ -12,12 +12,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IDExtratStyle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IDStyle)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.IDExtrat)
             </th>
@@ -34,13 +28,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.IDExtratStyle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IDStyle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IDExtrat)
+                @Html.DisplayFor(modelItem => item.DesignLength)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CostExtra)

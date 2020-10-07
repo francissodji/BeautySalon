@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<BeautyMvc.Models.StyleModelIF>
 
 @{
-    ViewData["Title"] = "ListAllStyle";
+    ViewData["Title"] = "List of All Style";
 }
 
-<h1>ListAllStyle</h1>
+<h1>List of All Style</h1>
 
 <p>
     <a asp-action="CreateStyle">Create New</a>
@@ -65,8 +65,9 @@
             <td>
                 @Html.ActionLink("Edit", "EditAStyle", new { Id = item.IDStyle }) |
                 @Html.ActionLink("Details", "DetailAStyle", new { Id = item.IDStyle }) |
-                @Html.ActionLink("Delete", "Delete", new { Id = item.IDStyle }) |
-                @Html.ActionLink("Add Length", "LenghtForStyle", new { item.IDStyle })
+                @Html.ActionLink("Delete", "Delete", new { Id = item.IDStyle }) | <==> |
+                @Html.ActionLink("Add Length", "CreateLengthForStyle", "LengthStyle", new { Id = item.IDStyle }) |
+                @Html.ActionLink("Edit All Length / Style", "ListAllLengthStyle", "LengthStyle", new { Id = item.IDStyle })
             </td>
         </tr>
 }

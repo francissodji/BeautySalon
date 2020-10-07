@@ -1,0 +1,77 @@
+﻿@model IEnumerable<BeautyMvc.Models.AppointmentModelFE>
+
+@{
+    ViewData["Title"] = "ListAllActiveAppointForDate";
+}
+
+<h1>ListAllActiveAppointForDate</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IDClientAppoint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IDStyleAppoint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IDLenghtstyle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAppoint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BeginTimeAppoint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddTakeOffAppoint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Typeservice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StateAppoint)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDClientAppoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDStyleAppoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDLenghtstyle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAppoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeginTimeAppoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddTakeOffAppoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Typeservice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateAppoint)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

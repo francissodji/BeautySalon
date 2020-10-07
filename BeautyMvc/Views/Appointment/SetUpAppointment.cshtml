@@ -1,0 +1,67 @@
+﻿@model BeautyMvc.Models.AppointmentModelFE
+
+@{
+    ViewData["Title"] = "Create New Appointment";
+}
+
+<h1>Set Up New Appointment</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SetUpAppointment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IDClientAppoint" class="control-label"></label>
+                <input asp-for="IDClientAppoint" class="form-control" />
+                <span asp-validation-for="IDClientAppoint" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IDStyleAppoint" class="control-label"></label>
+                <input asp-for="IDStyleAppoint" class="form-control" />
+                <span asp-validation-for="IDStyleAppoint" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IDLenghtstyle" class="control-label"></label>
+                <input asp-for="IDLenghtstyle" class="form-control" />
+                <span asp-validation-for="IDLenghtstyle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateAppoint" class="control-label"></label>
+                <input asp-for="DateAppoint" class="form-control" />
+                <span asp-validation-for="DateAppoint" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BeginTimeAppoint" class="control-label"></label>
+                <input asp-for="BeginTimeAppoint" class="form-control" />
+                <span asp-validation-for="BeginTimeAppoint" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AddTakeOffAppoint" /> @Html.DisplayNameFor(model => model.AddTakeOffAppoint)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Typeservice" class="control-label"></label>
+                <input asp-for="Typeservice" class="form-control" />
+                <span asp-validation-for="Typeservice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateAppoint" class="control-label"></label>
+                <input asp-for="StateAppoint" class="form-control" />
+                <span asp-validation-for="StateAppoint" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

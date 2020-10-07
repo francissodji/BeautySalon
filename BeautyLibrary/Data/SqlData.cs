@@ -1,6 +1,8 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -94,10 +96,16 @@ namespace BeautyLibrary.Data
         }
 
         //delete 
-        public void ExtratDelete()
+        public void ExtratDelete(int TheIdLength)
         {
+            string SqlText = @"DELETE FROM EXTRAT where IDExtrat = @IDExtrat";
 
+            _database.SaveData(SqlText,
+                               new { IDExtrat = TheIdLength },
+                               myBeautyconnectionString,
+                               false);
         }
+
 
         //List
         public List<ExtratModel> ExtratGetListAllExtrat()
@@ -114,12 +122,12 @@ namespace BeautyLibrary.Data
 
 
         //get Info One extra
-        public ExtratModel ExtratGetOneExtrat(int IdExtrat)
+        public ExtratModel ExtratGetOneExtrat(int TheIdExtrat)
         {
             ExtratModel theExtrat;
-            string textSql = "@select IdExtrat, TitleExtrat from EXTRAT where IdExtrat = @IdExtrat";
+            string textSql = @"select IdExtrat, TitleExtrat from EXTRAT where IdExtrat = @IdExtrat";
             theExtrat = _database.LaodData<ExtratModel, dynamic>(textSql,
-                                                                     new { },
+                                                                     new { IdExtrat = TheIdExtrat },
                                                                      myBeautyconnectionString,
                                                                      false).FirstOrDefault();
             return theExtrat;
@@ -136,20 +144,8 @@ namespace BeautyLibrary.Data
                                                                          true);
             return theLengthPerStyle;
         }
-
-
-        public ExtratStyleModel LengthGetOneLengthPerStyleFinanceInfo(int iDStyle, int iDLength)
-        {
-            ExtratStyleModel theOneLengthFinanceInfo;
-
-            theOneLengthFinanceInfo = _database.LaodData<ExtratStyleModel, dynamic>("dbo.spExtrat_GetOneExtratInfoFinance",
-                                                                         new { iDStyle, iDLength },
-                                                                         myBeautyconnectionString,
-                                                                         true).FirstOrDefault();
-
-            return theOneLengthFinanceInfo;
-        }
         //************************************************
+
         //******************Style***********************
         public void StyleAdd(string desigStyle, string descriptStyle, bool hairProvStyle,
                              decimal costStyle, decimal priceTakeOffHair, decimal costTouchUp, string pictureStyle)
@@ -201,8 +197,6 @@ namespace BeautyLibrary.Data
             return theStyleList.ToList();
         }
 
-
-
         public StyleModel StyleGetInfoById(int idStyle)
         {
             StyleModel theOneStyleList;
@@ -225,6 +219,7 @@ namespace BeautyLibrary.Data
             return theOneStyleList;
         }
         //******************************************************
+        
         //****************Type Operation *****************
         public List<TypeOperationModel> GetListTypeOperat()
         {
@@ -252,7 +247,7 @@ namespace BeautyLibrary.Data
         }
 
         //LengthPerStyle - Get All List
-        public List<ExtratStyleModel> LengthStyleGetAllLengthPerStyle(int TheIdStyle = 5)
+        public List<ExtratStyleModel> LengthStyleGetAllLengthPerStyle(int TheIdStyle)
         {
             List<ExtratStyleModel> AllLenghtForAStyle;
 
@@ -264,6 +259,36 @@ namespace BeautyLibrary.Data
                                                                    myBeautyconnectionString,
                                                                    false);
             return AllLenghtForAStyle.ToList();
+        }
+
+        public ExtratStyleModel LengthGetOneLengthPerStyleFinanceInfo(int iDStyle, int iDLength)
+        {
+            ExtratStyleModel theOneLengthFinanceInfo;
+
+            theOneLengthFinanceInfo = _database.LaodData<ExtratStyleModel, dynamic>("dbo.spExtrat_GetOneExtratInfoFinance",
+                                                                         new { iDStyle, iDLength },
+                                                                         myBeautyconnectionString,
+                                                                         true).FirstOrDefault();
+
+            return theOneLengthFinanceInfo;
+        }
+
+        public bool IsLengthInExtraStyle(int TheIdExtrat)
+        {
+            ExtratStyleModel theExtratStyle;
+            string textSql = @"select * from EXTRATSTYLE where IdExtrat = @IdExtrat";
+            theExtratStyle = _database.LaodData<ExtratStyleModel, dynamic>(textSql,
+                                                                     new { IdExtrat = TheIdExtrat },
+                                                                     myBeautyconnectionString,
+                                                                     false).FirstOrDefault();
+            if (theExtratStyle.IDExtratStyle > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         //***********************************************************************
 
@@ -287,6 +312,65 @@ namespace BeautyLibrary.Data
 
         }
 
+        //Get list appoint for A client for a specific date, in regard to the state of the appointment
+        public List<AppointmentModel> AppointGetListPerDate(DateTime TheBeginDate, int TheIdClient, char TheStateAppoint)
+        {
+            string TextSql;
+            List <AppointmentModel> theAppointmList;
+
+            TextSql = @"select * from APPOINTMENT WHERE StateAppoint where DateAppoint = @DateAppoint";
+
+            if (!TheStateAppoint.Equals('E')) // E = Nothing enterred
+            {
+                TextSql += " and StateAppoint = @StateAppoint";
+            }
+
+            if (TheIdClient > 0)
+            {
+                TextSql += " and IdClientAppoint = @IdClientAppoint";
+            }
+
+            theAppointmList = _database.LaodData< AppointmentModel, dynamic> (TextSql,
+                                                                    new { DateAppoint = TheBeginDate, IdClientAppoint = TheIdClient, StateAppoint = TheStateAppoint },
+                                                                    myBeautyconnectionString,
+                                                                   false);
+
+
+            return theAppointmList.ToList();
+        }
+
+        //************************************************************************
+
+        //***************************CLIENT***************************************
+        public void CreateClient(string TheFnameClient, string TheMnameClient, string TheLnameClient, string TheCelClient, string ThePhoneClient, DateTime TheDOBClient, string TheStreetClient,
+                                 string TheCountyClient, string TheZipCodeClient, string TheStateClient, string TheEmailClient, int TheIDUserClient)
+        {
+
+
+        string TextSql = @"insert into CLIENT(FnameClient,MnameClient,LnameClient,CelClient,PhoneClient, DOBClient, StreetClient, 
+                                                CountyClient, ZipCodeClient, StateClient, EmailClient, IDUserClient) 
+                                values (@FnameClient, @MnameClient, @LnameClient, @CelClient, PhoneClient, DOBClient, StreetClient, 
+                                        CountyClient, ZipCodeClient, StateClient, EmailClient, IDUserClient)";
+
+            _database.SaveData(TextSql,
+                               new { FnameClient = TheFnameClient,
+                                   MnameClient = TheMnameClient,
+                                   LnameClient = TheLnameClient,
+                                   CelClient = TheCelClient,
+                                   PhoneClient = ThePhoneClient,
+                                   DOBClient = TheDOBClient,
+                                   StreetClient = TheStreetClient,
+                                   CountyClient = TheCountyClient,
+                                   ZipCodeClient = TheZipCodeClient,
+                                   StateClient = TheStateClient,
+                                   EmailClient = TheEmailClient,
+                                   IDUserClient = TheIDUserClient
+                               },
+                               myBeautyconnectionString,
+                               false);
+        }
+
+        //**************************END CLIENT
 
 
         //****************Job Done *****************

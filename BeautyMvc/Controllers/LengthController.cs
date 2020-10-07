@@ -14,7 +14,6 @@ namespace BeautyMvc.Controllers
     {
         private readonly ISqlDataConnect _database;
 
-
         public LengthController(ISqlDataConnect database)
         {
             _database = database;
@@ -33,7 +32,7 @@ namespace BeautyMvc.Controllers
         }
 
         //List of Length
-        public IActionResult EditAllLength()
+        public IActionResult ListAllLength()
         {
             var AllLengthFromDB = _database.ExtratGetListAllExtrat();
 
@@ -78,7 +77,24 @@ namespace BeautyMvc.Controllers
             return View();
         }
 
-
+        public IActionResult DeleteLength(int Id)
+        {
+            if (Id > 0)
+            {
+                bool isLengthUsed = _database.IsLengthInExtraStyle(Id);
+                if (isLengthUsed == true)
+                {
+                    return ViewBag("The selected Length cannot be deleted. Impossible to continue.");
+                }
+                else
+                {
+                    _database.ExtratDelete(Id);
+                    return View();
+                }
+                
+            }
+            return View();
+        }
 
         public IActionResult Index()
         {

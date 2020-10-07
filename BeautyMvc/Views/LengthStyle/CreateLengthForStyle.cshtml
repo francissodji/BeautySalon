@@ -10,30 +10,15 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="LengthStyleController" asp-action="CreateLengthForStyle">
+        <form asp-action="CreateLengthForStyle">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+            <!--
             <div class="form-group">
                 <label asp-for="IDStyle" class="control-label"></label>
                 <input asp-for="IDStyle" class="form-control" />
                 <span asp-validation-for="IDStyle" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="IDExtrat" class="control-label"></label>
-                <input asp-for="IDExtrat" class="form-control" />
-                <span asp-validation-for="IDExtrat" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CostExtra" class="control-label"></label>
-                <input asp-for="CostExtra" class="form-control" />
-                <span asp-validation-for="CostExtra" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CostTouchUpExtra" class="control-label"></label>
-                <input asp-for="CostTouchUpExtra" class="form-control" />
-                <span asp-validation-for="CostTouchUpExtra" class="text-danger"></span>
-            </div>
-
+                -->
             <div class="form-group">
                 <label asp-for="IDExtrat" class="control-label"></label>
                 <select asp-for="IDExtrat" asp-items="@(new SelectList(@ViewBag.DdListLength,"IDExtrat","TitleExtrat"))">
@@ -41,6 +26,17 @@
                 </select>
             </div>
 
+            <div class="form-group">
+                <label asp-for="CostExtra" class="control-label"></label>
+                <input asp-for="CostExtra" class="form-control" />
+                <span asp-validation-for="CostExtra" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CostTouchUpExtra" class="control-label"></label>
+                <input asp-for="CostTouchUpExtra" class="form-control" />
+                <span asp-validation-for="CostTouchUpExtra" class="text-danger"></span>
+            </div>
 
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

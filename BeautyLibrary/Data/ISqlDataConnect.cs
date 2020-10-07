@@ -6,6 +6,8 @@ namespace BeautyLibrary.Data
 {
     public interface ISqlDataConnect
     {
+        List<AppointmentModel> AppointGetListPerDate(DateTime TheBeginDate, int TheIdClient, char TheStateAppoint);
+        void CreateClient(string TheFnameClient, string TheMnameClient, string TheLnameClient, string TheCelClient, string ThePhoneClient, DateTime TheDOBClient, string TheStreetClient, string TheCountyClient, string TheZipCodeClient, string TheStateClient, string TheEmailClient, int TheIDUserClient);
         void CreateLengthToStyle(int IdStyle, int IdLength, decimal CostLength, decimal CostTouchUp);
         void DiscountDelete(int idDiscount);
         DiscountModel DiscountGetById(int idDiscount);
@@ -13,11 +15,12 @@ namespace BeautyLibrary.Data
         void DiscountInsert(string theTitleDisc, float theRateDisc, decimal theCostDisc);
         void DiscountModify(int idDiscount, string titleDiscount, float rateDiscount, decimal costDiscount);
         void ExtratAdd(string titleExtrat);
-        void ExtratDelete();
+        void ExtratDelete(int TheIdLength);
         List<ExtratModel> ExtratGetListAllExtrat();
         ExtratModel ExtratGetOneExtrat(int IdExtrat);
         void ExtratModify(int idExtrat, string titleExtrat);
         List<TypeOperationModel> GetListTypeOperat();
+        bool IsLengthInExtraStyle(int TheIdExtrat);
         List<ExtratModel> LengthGetLenghtPerStyle(int iDStyle);
         ExtratStyleModel LengthGetOneLengthPerStyleFinanceInfo(int iDStyle, int iDLength);
         List<ExtratStyleModel> LengthStyleGetAllLengthPerStyle(int TheIdStyle);
