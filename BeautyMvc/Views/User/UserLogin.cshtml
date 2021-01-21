@@ -1,0 +1,63 @@
+﻿@model BeautyMvc.Models.LoginModelFE
+@{
+    ViewData["Title"] = "UserLogin";
+}
+
+
+
+<h1>User Login</h1>
+
+<hr />
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4" id="loginLeft">
+            <form asp-action="UserLogin">
+                <div>
+                    @ViewBag.ErrorMessage
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" id="UserPassword" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div>
+                    <input type="checkbox" onclick="myFunction()" />Show Password
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="LogIn" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-4" id="loginRigth">
+            <table id="customers">
+                <tr>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!--
+<script>
+    function myFunction() {
+        var aPassw = document.getElementById("UserPassword");
+        if (aPassw.nodeType = "password") {
+            aPassw.
+        }
+    }
+</script>
+-->

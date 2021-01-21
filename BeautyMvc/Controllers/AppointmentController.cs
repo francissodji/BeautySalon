@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using BeautyLibrary.Data;
 using Microsoft.AspNetCore.Mvc;
 using BeautyMvc.Models;
-
-
+using BeautyLibrary.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BeautyMvc.Controllers
 {
@@ -23,19 +23,71 @@ namespace BeautyMvc.Controllers
 
         public IActionResult SetUpAppointment(AppointmentModelFE AppointMod)
         {
+            ViewBag.StyleList = new SelectList(GetStyleList(), "IDStyle", "DesigStyle");
+
             if (ModelState.IsValid)
             {
                 if (AppointMod.IDClientAppoint > 0)
                 {
                     AppointMod.StateAppoint = 'N';
 
-                    _database.SetUpAppointment(AppointMod.IDClientAppoint, AppointMod.IDStyleAppoint, AppointMod.IDLenghtstyle,
+                    _database.SetNewAppointment(AppointMod.IDClientAppoint, AppointMod.IDStyleAppoint, AppointMod.IDLenghtstyle,
                     AppointMod.DateAppoint, AppointMod.BeginTimeAppoint, AppointMod.AddTakeOffAppoint,
-                    AppointMod.StateAppoint, AppointMod.Typeservice);
+                    AppointMod.StateAppoint, AppointMod.Typeservice, AppointMod.NumberTrack, AppointMod.IDBraiderAppoint,
+                    AppointMod.IdSizeAppoint, AppointMod.IdBraiderOwner);
                 }
             }
             return View();
         }
+
+
+        //Cascading***************************
+        public List<StyleModel> GetStyleList()
+        {
+            var AllStyleFromDB = _database.StyleGetList();
+
+            return AllStyleFromDB;
+        }
+
+
+        public IActionResult GetAllSizePerStyle(int theIdStyle)
+        {
+            try
+            {
+                var AllSizePerStylefromDB = _database.SizePerStyleGetAllList(theIdStyle);
+                ViewBag.SizeDDList = new SelectList(AllSizePerStylefromDB, "IdSize", "TitleSize");
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
+            return PartialView("DisplaySizeInStyle"); //DisplaySizeInStyle is the PartialView's name
+        }
+
+        public IActionResult GetAllLengthPerStyleAndSize(int theIdSize)
+        {
+            try
+            {
+                theIdSize = 13;
+                List<ExtratModel> lengthAllFromDB = _database.LengthPerStyleAllList(theIdSize);
+                    
+                if (lengthAllFromDB.Count > 0)
+                {
+                    ViewBag.lengthDDList = new SelectList(lengthAllFromDB, "IdExtrat", "TitleExtrat");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return PartialView("DisplayLengthInStyleAndSize");
+        }
+
+        //****************************************
 
         public IActionResult ListAllActiveAppointForDate()
         {
@@ -56,9 +108,15 @@ namespace BeautyMvc.Controllers
                     DateAppoint = appoint.DateAppoint,
                     BeginTimeAppoint = appoint.BeginTimeAppoint,
                     AddTakeOffAppoint = appoint.AddTakeOffAppoint,
-                    StateAppoint = appoint.StateAppoint
+                    StateAppoint = appoint.StateAppoint,
+                    Typeservice = appoint.Typeservice,
+                    NumberTrack = appoint.NumberTrack,
+                    IDBraiderAppoint = appoint.IDBraiderAppoint,
+                    IdSizeAppoint = appoint.IdSizeAppoint,
+                    IdBraiderOwner = appoint.IdBraiderOwner
                 });
             }
+
 
             return View(TheListAppoint);
         }

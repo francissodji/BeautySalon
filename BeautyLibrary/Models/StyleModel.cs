@@ -14,6 +14,10 @@ namespace BeautyLibrary.Models
         public string PictureStyle { get; set; }
         public decimal PriceTakeOffHair { get; set; }
         public decimal CostTouchUp { get; set; }
+        public string ChargeType { get; set; }
+        public float TimeDoneStyle { get; set; }
+        public bool ModifyCostManu { get; set; }
+        public decimal CostHairDeducted { get; set; }
         public byte[] ImageStyle { get; set; }
     }
 }

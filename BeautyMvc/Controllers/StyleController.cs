@@ -28,7 +28,7 @@ namespace BeautyMvc.Controllers
         }
 
         [Obsolete]
-        public IActionResult CreateStyle(StyleModelIF StyleMod)
+        public IActionResult CreateStyle2(StyleModelIF StyleMod)
         {
             
             if (ModelState.IsValid)
@@ -47,7 +47,10 @@ namespace BeautyMvc.Controllers
                 string uniqueFileName = ProcessUploadedFile(StyleMod);
 
                 _database.StyleAdd(StyleMod.DesigStyle, StyleMod.DescriptStyle, StyleMod.HairProvStyle,
-                                   StyleMod.CostStyle, StyleMod.PriceTakeOffHair, StyleMod.CostTouchUp, uniqueFileName);
+                                    StyleMod.CostStyle, StyleMod.PriceTakeOffHair, StyleMod.CostTouchUp, StyleMod.ChargeType,
+                                    StyleMod.TimeDoneStyle, StyleMod.ModifyCostManu, StyleMod.CostHairDeducted, uniqueFileName);
+
+                
 
                 //int theIdOfNewStyle = _database.StyleGetInfoByTitle(StyleMod.DesigStyle); //This line is to retrieve the Style just inserted Id and pass it to RedirectToAction
 

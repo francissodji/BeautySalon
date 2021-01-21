@@ -27,7 +27,7 @@ namespace BeautyMvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                _database.DiscountInsert(modelDisc.TitleDiscount, modelDisc.RateDiscount, modelDisc.CostDiscount);
+                _database.DiscountAdd(modelDisc.TitleDiscount, modelDisc.RateDiscount, modelDisc.CostDiscount);
                 return RedirectToAction();
             }
             

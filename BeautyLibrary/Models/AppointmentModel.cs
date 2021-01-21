@@ -23,5 +23,13 @@ namespace BeautyLibrary.Models
         public char StateAppoint { get; set; }
 
         public char Typeservice { get; set; }
+
+        public int NumberTrack { get; set; }
+
+        public int IDBraiderAppoint { get; set; }
+
+        public int IdSizeAppoint { get; set; }
+
+        public int IdBraiderOwner { get; set; }
     }
 }

@@ -23,6 +23,11 @@ namespace BeautyMvc.Models
 
         [Required]
         [BindProperty]
+        [DisplayName("Size")]
+        public int IdSizeAppoint { get; set; }
+
+        [Required]
+        [BindProperty]
         [DisplayName("Length")]
         public int IDLenghtstyle { get; set; }
 
@@ -34,12 +39,13 @@ namespace BeautyMvc.Models
 
         [Required]
         [BindProperty]
+        [DataType(DataType.Time)]
         [DisplayName("Beginning Time")]
         public DateTime BeginTimeAppoint { get; set; } //= DateTime.Now.ToString("h:mm:ss tt");
 
         [Required]
         [BindProperty]
-        [DisplayName("Will Require Take Off")]
+        [DisplayName("Add Take Down?")]
         public bool AddTakeOffAppoint { get; set; }
 
         [Required]
@@ -48,5 +54,27 @@ namespace BeautyMvc.Models
         public char Typeservice { get; set; }
 
         public char StateAppoint { get; set; }
+
+
+        [BindProperty]
+        [DisplayName("Number Track")]
+        public int NumberTrack { get; set; }
+
+        [Required]
+        [BindProperty]
+        [DisplayName("Braider")]
+        public int IDBraiderAppoint { get; set; }
+
+
+
+        [Required]
+        [BindProperty]
+        [DisplayName("Related Owner")]
+        public int IdBraiderOwner { get; set; }
+
+        public enum TheYesNo
+        { 
+
+        }
     }
 }

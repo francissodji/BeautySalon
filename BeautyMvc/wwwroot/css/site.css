@@ -73,7 +73,34 @@ body {
 
 /**********My CSS********/
 
+body {
+    background-color:whitesmoke
+}
+
 .imageBeauty {
     height:250px;
     width:250px;
+}
+
+
+#loginLeft {
+    width:200px;
+    align-content: center;
+    border-radius: 5px;
+    background-color: lightgrey;
+    padding: 20px;
+}
+
+#loginRigth {
+    width: auto;
+    align-content: center;
+    padding: 20px;
+}
+
+#IDStyleAppoint, #IdSizeAppoint, #IDLenghtstyle{
+    width: 400px
+}
+
+#AddTakeOffAppoint, #Typeservice {
+    width:150px
 }

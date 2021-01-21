@@ -1,0 +1,104 @@
+﻿@model BeautyMvc.Models.UsersModelFE
+
+@{
+    ViewData["Title"] = "User Registration";
+}
+
+<h1>UserRegistration</h1>
+
+<h4>UsersModelFE</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UserRegistration">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Connectstate" /> @Html.DisplayNameFor(model => model.Connectstate)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailClient" class="control-label"></label>
+                <input asp-for="EmailClient" class="form-control" />
+                <span asp-validation-for="EmailClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FnameClient" class="control-label"></label>
+                <input asp-for="FnameClient" class="form-control" />
+                <span asp-validation-for="FnameClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MnameClient" class="control-label"></label>
+                <input asp-for="MnameClient" class="form-control" />
+                <span asp-validation-for="MnameClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LnameClient" class="control-label"></label>
+                <input asp-for="LnameClient" class="form-control" />
+                <span asp-validation-for="LnameClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CelClient" class="control-label"></label>
+                <input asp-for="CelClient" class="form-control" />
+                <span asp-validation-for="CelClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneClient" class="control-label"></label>
+                <input asp-for="PhoneClient" class="form-control" />
+                <span asp-validation-for="PhoneClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DOBClient" class="control-label"></label>
+                <input asp-for="DOBClient" class="form-control" />
+                <span asp-validation-for="DOBClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StreetClient" class="control-label"></label>
+                <input asp-for="StreetClient" class="form-control" />
+                <span asp-validation-for="StreetClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CountyClient" class="control-label"></label>
+                <input asp-for="CountyClient" class="form-control" />
+                <span asp-validation-for="CountyClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCodeClient" class="control-label"></label>
+                <input asp-for="ZipCodeClient" class="form-control" />
+                <span asp-validation-for="ZipCodeClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateClient" class="control-label"></label>
+                @if (ViewBag.StateList != null)
+                {
+                    @Html.DropDownListFor(m => m.StateClient, ViewBag.StateList as SelectList, "... Select State ...", new { @class = "form-control" })
+                }
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

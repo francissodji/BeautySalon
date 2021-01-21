@@ -42,6 +42,7 @@ namespace BeautyMvc.Models
 
         [BindProperty]
         [DisplayName("Date Of Birth")]
+        [DataType(DataType.DateTime)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DOBClient { get; set; }
 
@@ -57,14 +58,13 @@ namespace BeautyMvc.Models
         [DisplayName("Zip Code")]
         public string ZipCodeClient { get; set; }
 
-        [BindProperty]
-        [DisplayName("E-mail")]
-        public string EmailClient { get; set; }
 
         [BindProperty]
         [DisplayName("State")]
         public string StateClient { get; set; }
 
         public int IDUserClient { get; set; }
+
+       
     }
 }

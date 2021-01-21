@@ -1,0 +1,13 @@
+﻿
+@model BeautyLibrary.Models.ExtratModel
+
+<option value=""> ... Select Length ...</option>
+
+@if (ViewBag.lengthDDList = null)
+{
+    foreach (var item in ViewBag.lengthDDList)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+
+}

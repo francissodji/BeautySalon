@@ -4,57 +4,120 @@
     ViewData["Title"] = "Create New Appointment";
 }
 
-<h1>Set Up New Appointment</h1>
+<h1>Set up a new Appointment</h1>
 
-<hr />
+<!--<hr />-->
+
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="SetUpAppointment">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="IDClientAppoint" class="control-label"></label>
-                <input asp-for="IDClientAppoint" class="form-control" />
-                <span asp-validation-for="IDClientAppoint" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IDStyleAppoint" class="control-label"></label>
-                <input asp-for="IDStyleAppoint" class="form-control" />
-                <span asp-validation-for="IDStyleAppoint" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IDLenghtstyle" class="control-label"></label>
-                <input asp-for="IDLenghtstyle" class="form-control" />
-                <span asp-validation-for="IDLenghtstyle" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateAppoint" class="control-label"></label>
-                <input asp-for="DateAppoint" class="form-control" />
-                <span asp-validation-for="DateAppoint" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BeginTimeAppoint" class="control-label"></label>
-                <input asp-for="BeginTimeAppoint" class="form-control" />
-                <span asp-validation-for="BeginTimeAppoint" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="AddTakeOffAppoint" /> @Html.DisplayNameFor(model => model.AddTakeOffAppoint)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Typeservice" class="control-label"></label>
-                <input asp-for="Typeservice" class="form-control" />
-                <span asp-validation-for="Typeservice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StateAppoint" class="control-label"></label>
-                <input asp-for="StateAppoint" class="form-control" />
-                <span asp-validation-for="StateAppoint" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="col">
+        <div class="col-md-4" id="formuAppoint">
+            <form asp-action="SetUpAppointment">
+                <!--
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="IDClientAppoint" class="control-label"></label>
+                        <input asp-for="IDClientAppoint" class="form-control" />
+                        <span asp-validation-for="IDClientAppoint" class="text-danger"></span>
+                    </div>
+                -->
+                <div class="form-group" id="IDStyleAppoint">
+                    <label asp-for="IDStyleAppoint" class="control-label"></label>
+                    @if (ViewBag.StyleList != null)
+                    {
+                        @Html.DropDownListFor(m => m.IDStyleAppoint, ViewBag.StyleList as SelectList, "... Select Style ...", new { @class = "form-control" })
+                    }
+                </div>
+
+                <!--To add this DropDownList to the Partial View named 'DisplaySizeInStyle' it need some javascript code.-->
+                <!--See the javascript code at the bottom of the page-->
+                <div class="form-group" id="IdSizeAppoint">
+                    <label asp-for="IdSizeAppoint" class="control-label"></label>
+                    @Html.DropDownListFor(m => m.IdSizeAppoint, new SelectList(""), "... Select Size ...", new { @class = "form-control" })
+                </div>
+
+                <div class="form-group" id="IDLenghtstyle">
+                    <label asp-for="IDLenghtstyle" class="control-label"></label>
+                    @Html.DropDownListFor(m => m.IDLenghtstyle, new SelectList(""), "... Select Length ...", new { @class = "form-control" })
+                </div>
+
+                <div class="row">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="col">
+                                    <div class="form-group" align="left">
+                                        <label asp-for="DateAppoint" class="control-label"></label>
+                                        <input asp-for="DateAppoint" class="form-control" />
+                                        <span asp-validation-for="DateAppoint" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td align="right">
+                                <div class="col" align="right">
+                                    <div class="form-group" >
+                                        <label asp-for="BeginTimeAppoint" class="control-label"></label>
+                                        <input asp-for="BeginTimeAppoint" class="form-control" />
+                                        <span asp-validation-for="BeginTimeAppoint" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div width="400px">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="form-group" id="AddTakeOffAppoint" align="left">
+                                    <label asp-for="AddTakeOffAppoint" class="control-label"></label>
+                                    @Html.DropDownListFor(m => m.AddTakeOffAppoint, new[] { new SelectListItem { Text = "Yes", Value = "1" }, new SelectListItem { Text = "No", Value = "0" } })
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group" id="Typeservice" align="right">
+                                    <label asp-for="Typeservice" class="control-label"></label>
+                                    @Html.DropDownListFor(m => m.Typeservice, new[] { new SelectListItem { Text = "Full Service", Value = "F" }, new SelectListItem { Text = "Touch Up", Value = "T" } })
+                                </div>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+
+                
+
+                
+
+                <!--
+                <div class="form-group">
+                    <label asp-for="StateAppoint" class="control-label"></label>
+                    <input asp-for="StateAppoint" class="form-control" />
+                    <span asp-validation-for="StateAppoint" class="text-danger"></span>
+                </div>
+                -->
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col">
+        <div>
+            <form>
+                <div class="form-group">
+                    <label asp-for="AddTakeOffAppoint" class="control-label"></label>
+                    @Html.DropDownListFor(m => m.AddTakeOffAppoint, new[] { new SelectListItem { Text = "Yes", Value = "1" }, new SelectListItem { Text = "No", Value = "0" } })
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Typeservice" class="control-label"></label>
+                    @Html.DropDownListFor(m => m.Typeservice, new[] { new SelectListItem { Text = "Full Service", Value = "F" }, new SelectListItem { Text = "Touch Up", Value = "T" } })
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -62,6 +125,54 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var myStyleId;
+            $("#IDStyleAppoint").change(function () {
+                myStyleId = $(this).val();
+                debugger
+                $.ajax({
+                    type: "post",
+                    url: "/Appointment/GetAllSizePerStyle?theIdStyle=" + myStyleId,
+                    contentType: "html",
+                    success: function (response) {
+                        debugger
+                        $("#IdSizeAppoint").empty();
+                        $("#IdSizeAppoint").append(response);
+                    }
+                })
+            })
+        })
+
+
+        $(document).ready(function () {
+            $("#IdSizeAppoint").change(function () {
+                var mySizeId = $(this).val();
+                debugger
+                $.ajax({
+                    type: "post",
+                    url: "/Appointment/GetAllLengthPerStyleAndSize?theIdSize = " + mySizeId,
+                    contentType: "html",
+                    success: function (response) {
+                        debugger
+                        $("#IDLenghtstyle").empty();
+                        $("#IDLenghtstyle").append(response);
+                    }
+                })
+            })
+        })
+
+
+    </script>
+
+
 }
+

@@ -4,6 +4,6 @@ AS
 Begin
 	set nocount on;
 
-	select IDStyle,DesigStyle,DescriptStyle,HairProvStyle,CostStyle,CostTouchUp,PriceTakeOffHair,ImageStyle
+	select IDStyle,DesigStyle,DescriptStyle,HairProvStyle,CostStyle,CostTouchUp,PriceTakeOffHair
 	from STYLE where DesigStyle = @DesigStyle
 End

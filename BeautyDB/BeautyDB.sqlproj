@@ -107,6 +107,10 @@
     <Build Include="dbo\StoredProcedures\spStyle_GetInfoStyleByTitle.sql" />
     <Build Include="dbo\StoredProcedures\spStyle_GetListStyle.sql" />
     <Build Include="dbo\StoredProcedures\spStyle_ModifyStyle.sql" />
+    <Build Include="dbo\Tables\SIZE.sql" />
+    <Build Include="dbo\Tables\THEWORDS.sql" />
+    <Build Include="dbo\Tables\ROLES.sql" />
+    <Build Include="dbo\Tables\USERSROLES.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Profiles\BeautyDB.publish.xml" />

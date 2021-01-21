@@ -49,6 +49,41 @@ namespace BeautyMvc.Models
         [DisplayName("Picture Style")]
         public string PictureStyle { get; set; }
 
+        [Required]
+        [BindProperty(SupportsGet = true)]
+        [DisplayName("Charge Type")]
+        public string ChargeType { get; set; }
+
+        [Required]
+        [BindProperty(SupportsGet = true)]
+        [DisplayName("Braiding Duration")]
+        public float TimeDoneStyle { get; set; }
+
+        [Required]
+        [BindProperty(SupportsGet = true)]
+        [DisplayName("Modify Cost ?")]
+        public bool ModifyCostManu { get; set; }
+
+        [Required]
+        [BindProperty(SupportsGet = true)]
+        [DisplayName("Cost Hair Detuct")]
+        public decimal CostHairDeducted { get; set; }
+
         public IFormFile Picture { get; set; }
+
+
+        /*
+       public enum YesNo
+       { 
+           Yes,
+           No
+       }
+
+       public enum TheTypeCost
+       { 
+           CS,
+           CT
+       }
+       */
     }
 }

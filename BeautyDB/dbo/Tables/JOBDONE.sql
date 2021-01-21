@@ -11,8 +11,12 @@
 	[AddTakeoffJob] [bit] NULL,
 	[IDDiscount] [int] NULL,
 	[IdExtraJobDone] [int] NULL,
-	[ClientBehaviourNote] NVARCHAR(1000) NULL, 
-    [IdBraiderOwnerRelate] INT NULL, 
+	[ClientBehaviourNote] [nvarchar](1000) NULL,
+	[IdBraiderOwnerRelate] [int] NULL,
+	[NumberTrackJobDone] [int] NULL,
+	[IdClientRelative] [int] NULL,
+	[IdSizeJob] [int] NULL,
+
     CONSTRAINT [FK_JOBDONE_APPOINTMENT] FOREIGN KEY([IDAppoint]) REFERENCES [dbo].[APPOINTMENT] ([IDAppoint]),
 	CONSTRAINT [FK_JOBDONE_DISCOUNT] FOREIGN KEY([IDDiscount]) REFERENCES [dbo].[DISCOUNT] ([IDDiscount]),
 )

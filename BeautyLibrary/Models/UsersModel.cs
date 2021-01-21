@@ -10,7 +10,11 @@ namespace BeautyLibrary.Models
         public string Username { get; set; }
         public string Password { get; set; }
         public int Idprofil { get; set; }
-        public DateTime Dateuserexpire { get; set; }
         public bool Connectstate { get; set; }
+
+        public Nullable<System.DateTime> Dateuserexpire { get; set; }
+
+        public System.Guid ActivationCode { get; set; }
+        
     }
 }

@@ -9,6 +9,11 @@
 	[AddTakeOffAppoint] [bit] NULL,
 	[StateAppoint] [nchar](1) NULL,
 	[Typeservice] [nchar](1) NULL,
+	[NumberTrack] [int] NULL,
+	[IDBraiderAppoint] [int] NULL,
+	[IdSizeAppoint] [int] NULL,
+	IdBraiderOwner [int] NULL,
+	
 	CONSTRAINT [FK_APPOINTMENT_CLIENT] FOREIGN KEY([IDClientAppoint]) REFERENCES [dbo].[CLIENT] ([IDClient]),
 	CONSTRAINT [FK_APPOINTMENT_STYLE] FOREIGN KEY([IDStyleAppoint]) REFERENCES [dbo].[STYLE] ([IDStyle]),
 )

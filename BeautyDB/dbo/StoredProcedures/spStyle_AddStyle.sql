@@ -5,14 +5,19 @@
 	@costStyle money,
 	@priceTakeOffHair money,
 	@costTouchUp money,
-	@pictureStyle nvarchar(300),
-	@imageStyle varbinary(max)
+	@ChargeType nchar(2),
+	@TimeDoneStyle float,
+	@ModifyCostManu bit,
+	@CostHairDeducted money,
+	@PictureStyle nvarchar(300)
 AS
 Begin
 	set nocount on;
 
 	insert into STYLE(DesigStyle, DescriptStyle, HairProvStyle,
-	CostStyle, PriceTakeOffHair, CostTouchUp, PictureStyle,ImageStyle)
+	CostStyle, PriceTakeOffHair, CostTouchUp, ChargeType, TimeDoneStyle,
+	ModifyCostManu, CostHairDeducted, PictureStyle)
     values(@desigStyle,@descriptStyle,@hairProvStyle,@costStyle,
-	@priceTakeOffHair,@costTouchUp,@pictureStyle,@imageStyle);
+	@priceTakeOffHair,@costTouchUp, @ChargeType, @TimeDoneStyle,
+	@ModifyCostManu, @CostHairDeducted, @PictureStyle);
 end

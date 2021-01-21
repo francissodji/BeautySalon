@@ -1,0 +1,11 @@
+﻿@model BeautyLibrary.Models.StyleModel
+
+<option value=""> ... Select Size ...</option>
+
+@if (ViewBag.SizeDDList != null)
+{
+    foreach (var size in ViewBag.SizeDDList)
+    {
+        <option value="@size.Value">@size.Text</option>
+    }
+}

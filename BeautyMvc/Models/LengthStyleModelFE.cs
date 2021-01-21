@@ -21,6 +21,12 @@ namespace BeautyMvc.Models
         public int IDStyle { get; set; }
 
         [Required]
+        [DisplayName("Size")]
+        [BindProperty]
+        public int IdSize { get; set; }
+
+
+        [Required]
         [DisplayName("Length")]
         [BindProperty]
         public int IDExtrat { get; set; }
